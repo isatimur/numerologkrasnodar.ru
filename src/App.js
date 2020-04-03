@@ -46,7 +46,7 @@ class CustomTable extends React.Component {
                 <div className="columns is-mobile">
                     <div className="column is-6 has-background-custom" style={{color: "rgb(255, 255, 255)"}}>
                         <div className="result__item has-text-left">
-                            <div className="result__info ">Дата рождения: {birthday ? birthday : "-"}</div>
+                            <div className="result__info ">Дата рождения: {birthday ? birthday : "-"} </div>
                             <div className="result__info"></div>
                         </div>
                     </div>
@@ -175,22 +175,16 @@ function CopyExample(props) {
 function getTextFromMatrix(matrix) {
     return "" + matrix[0][0] + "/" + matrix[0][1] + "/" + matrix[0][2] + "/" + matrix[1][0] + "/" + matrix[1][1] + "/" + matrix[1][2] + "/" + matrix[2][0] + "/" + matrix[2][1] + "/" + matrix[2][2];
 }
+
 function reduceNumber(innum) {
-    while(innum > 9) {
-        var tempSubName = innum.toString().split("");
-        var subNameValue = 0;
-        for (var x = 0,  y = tempSubName.length; x < y; x++)
-        { subNameValue = subNameValue + parseInt(tempSubName[x]); }
-        innum = subNameValue;
-    }
     return innum;
 }
+
 function App(props) {
 
     const [mask, setMask] = React.useState('00.00.0000');
     const [maskString, setMaskString] = React.useState('DD.MM.YYYY');
     const [locale, setLocale] = useState("ru");
-    const [anchorEl, setAnchorEl] = useState(null);
     const [selectedDate, setSelectedDate] = useState(moment(new Date()).format("DD.MM.YYYY").toString());
     const [primaryNumbers, setPrimaryNumbers] = useState(null);
     const [fateNumber, setFateNumber] = useState("-");
@@ -228,10 +222,26 @@ function App(props) {
                 console.log(primaryNumbers)
                 fateNumber = fateNumber + newNum;
             }
-            fateNumber = reduceNumber(parseInt(secondNumberText));
-            console.log("SecondNumber " + fateNumber);
-            primaryNumbers.push(fateNumber)
 
+            let innum = parseInt(secondNumberText);
+
+            while (innum > 9 && innum !== 11) {
+                var tempSubName = innum.toString().split("");
+                var subNameValue = 0;
+                for (var x = 0, y = tempSubName.length; x < y; x++) {
+                    subNameValue = subNameValue + parseInt(tempSubName[x]);
+                }
+                innum = subNameValue;
+                var tempNew = innum.toString().split("");
+                for (var x = 0, y = tempNew.length; x < y; x++) {
+                    primaryNumbers.push(parseInt(tempNew[x]));
+                }
+            }
+            console.log("fate additional: " + primaryNumbers)
+
+            fateNumber = innum;
+
+            console.log("SecondNumber " + fateNumber);
 
             let thirdNumber = firstNumber - (2 * primaryNumbers[0]);
             console.log("thirdNumber " + thirdNumber);
@@ -340,7 +350,8 @@ function App(props) {
                         <CustomTable date={selectedDate} primaryNumbers={primaryNumbers}
                                      fateNumber={fateNumber} birthday={birthday}
                                      temperamentNumber={temperamentNumber} goalNumber={goalNumber}
-                                     famNumber={famNumber} habbNum={habbNumber} bytNum={bytNumber}/>
+                                     famNumber={famNumber} habbNum={habbNumber} bytNum={bytNumber}
+                        />
                         <div className="columns is-mobile">
                             <div className="column" style={{marginTop: "1rem"}}>
                                 <div className="field is-grouped is-grouped-centered">
