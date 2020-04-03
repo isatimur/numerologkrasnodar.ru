@@ -15,11 +15,6 @@
 
 .App-header {
     background-color: #0c1a38;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     color: white;
 }
 button
@@ -37,44 +32,178 @@ button
     }
 }
 
-.tg {
-    border-collapse: collapse;
-    border-spacing: 0;
+.has-text-centered {
+    text-align: center!important;
+}
+article, aside, figure, footer, header, hgroup, section {
+    display: block;
+}
+*, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
 }
 
-.tg
-td {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    padding: 10px 5px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    word-break: normal;
-    border-color: black;
+section {
+    display: block;
+}
+.columns.is-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.columns:not(:last-child) {
+    margin-bottom: .75rem;
+}
+.columns {
+    margin-left: -.75rem;
+    margin-right: -.75rem;
+    margin-top: -.75rem;
 }
 
-.tg
-th {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-    padding: 10px 5px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    word-break: normal;
-    border-color: black;
+div {
+    display: block;
+}
+.columns.is-mobile>.column.is-9 {
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    width: 75%;
 }
 
-.tg .tg-baqh {
-    text-align: center;
-    vertical-align: top
+.column {
+    padding: .1rem;
+}
+.column {
+    display: block;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    padding: .75rem;
+}
+.result__item {
+    height: 5rem;
+    padding: 1.5em 0;
 }
 
-.primary-Num {
-
+.has-text-left {
+    text-align: left!important;
 }
-span .num-descr {
-    size: 10px;
+.result__answer, .result__info, .result__item h4, .result__item p {
+    font-size: 1em;
+    font-family: Cormorant Garamond,sans-serif!important;
+}
+.columns.is-mobile>.column.is-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    width: 25%;
+}
+
+.column {
+    padding: .1rem;
+}
+.column {
+    display: block;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    padding: .75rem;
+}
+.columns.is-vcentered {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.columns.is-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.columns:not(:last-child) {
+    margin-bottom: .75rem;
+}
+.columns {
+    margin-left: -.75rem;
+    margin-right: -.75rem;
+    margin-top: -.75rem;
+}
+.column {
+    padding: .1rem;
+}
+
+.column {
+    display: block;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    padding: .75rem;
+}
+
+.result__item {
+    height: 5rem;
+    padding: 1.5em 0;
+}
+.result__answer, .result__info, .result__item h4, .result__item p {
+    font-size: 1em;
+    font-family: Cormorant Garamond,sans-serif!important;
+}
+.result__item h4 {
+    color: #ffffff;
+}
+
+.column {
+    padding: .1rem;
+}
+.columns.is-mobile>.column.is-offset-3 {
+    margin-left: 25%;
+}
+.columns.is-mobile>.column.is-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    width: 25%;
+}
+html {
+    background-color: #fff;
+    font-size: 16px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+body {
+    color: #4a4a4a;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+body, button, input, select, textarea {
+    font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+.container {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
 }

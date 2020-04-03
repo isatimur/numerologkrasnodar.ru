@@ -6,7 +6,7 @@ import './App.css';
 
 import moment from "moment"
 
-import {Table, Button, OverlayTrigger, Tooltip} from 'react-bootstrap';
+import {Button, OverlayTrigger, Tooltip} from 'react-bootstrap';
 
 function renderTooltip(props) {
     return (
@@ -15,6 +15,7 @@ function renderTooltip(props) {
         </Tooltip>
     );
 }
+
 function compareWithZero(matrix, i, j) {
     return matrix[i][j] === '-' || matrix[i][j] === 0 ? 0 : matrix[i][j];
 }
@@ -29,7 +30,6 @@ class CustomTable extends React.Component {
     }
 
 
-
     render() {
 
         const primaryNumbers = this.props.primaryNumbers;
@@ -42,70 +42,92 @@ class CustomTable extends React.Component {
         const bytNum = this.props.bytNum;
 
         return (
-            <Table variant="dark" bordered responsive>
-                <tbody>
-                <tr>
-                    <td  colSpan="2"><p>Дата рождения:</p><span
-                        className="birthdate">{birthday}</span></td>
-                    <td ><p className="fate-Num">{fateNumber}</p><span className="num-descr">число судьбы</span>
-                    </td>
-                    <td ><p className="diagonal-Num">{temperamentNumber}</p><span
-                        className="num-descr">темперамент</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[0][0]: "-"}</p>
-                        <span
-                            className="num-descr">характер</span></td>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[1][0]: "-"}</p>
-                        <span
-                            className="num-descr">здоровье</span></td>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[2][0]: "-"}</p>
-                        <span
-                            className="num-descr">удача</span></td>
-                    <td ><p className="primary-Num">{goalNum}</p><span
-                        className="num-descr">цель</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[0][1]: "-"}</p>
-                        <span
-                            className="num-descr">энергия</span></td>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[1][1]: "-"}</p>
-                        <span
-                            className="num-descr">логика</span></td>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[2][1]: "-"}</p>
-                        <span
-                            className="num-descr">долг</span></td>
-                    <td ><p className="primary-Num">{famNum}</p><span
-                        className="num-descr">семья</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[0][2]: "-"}</p>
-                        <span
-                            className="num-descr">интерес</span></td>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[1][2]: "-"}</p>
-                        <span
-                            className="num-descr">труд</span></td>
-                    <td ><p className="primary-Num">{primaryNumbers ? primaryNumbers[2][2]: "-"}</p>
-                        <span
-                            className="num-descr">память</span></td>
-                    <td ><p className="primary-Num">{habbitNum}</p><span
-                        className="num-descr">привычки</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td ></td>
-                    <td ><p className="primary-Num">{bytNum}</p><span
-                        className="num-descr">быт</span>
-                    </td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-                </tbody>
-            </Table>
+            <div>
+                <div className="columns is-mobile">
+                    <div className="column is-6 has-background-custom" style={{color: "rgb(255, 255, 255)"}}>
+                        <div className="result__item has-text-left">
+                            <div className="result__info ">Дата рождения: {birthday ? birthday : "-"}</div>
+                            <div className="result__info"></div>
+                        </div>
+                    </div>
+                    <div className="column is-3 has-background-custom">
+                        <div className="result__item" style={{height: "100%"}}><h4
+                            style={{color: "rgb(255, 255, 255)"}}>Число судьбы</h4> <p
+                            style={{color: "rgb(255, 255, 255)"}}>{fateNumber ? fateNumber : "-"}</p>
+                        </div>
+                    </div>
+                    <div className="column is-3 has-background-custom">
+                        <div className="result__item" style={{height: "100%"}}><h4
+                            style={{color: "rgb(255, 255, 255)"}}>Темпе
+                            рамент</h4> <p
+                            style={{color: "rgb(255, 255, 255)"}}>{temperamentNumber ? temperamentNumber : "-"}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="columns is-mobile is-vcentered">
+                    <div className="column bordered">
+                        <div className="result__item"><h4>Характер</h4>
+                            <p>{primaryNumbers ? primaryNumbers[0][0] : "-"}</p></div>
+                    </div>
+                    <div className="column bordered">
+                        <div className="result__item"><h4>Здоровье</h4>
+                            <p>{primaryNumbers ? primaryNumbers[1][0] : "-"}</p></div>
+                    </div>
+                    <div className="column bordered">
+                        <div className="result__item"><h4>Удача</h4>
+                            <p>{primaryNumbers ? primaryNumbers[2][0] : "-"}</p></div>
+                    </div>
+                    <div className="column bordered has-background-custom">
+                        <div className="result__item"><h4 style={{color: "rgb(255, 255, 255)"}}>Цель</h4> <p
+                            style={{color: "rgb(255, 255, 255)"}}>{goalNum ? goalNum : "-"}</p></div>
+                    </div>
+                </div>
+                <div className="columns is-mobile">
+                    <div className="column bordered">
+                        <div className=" result__item"><h4>Энергия</h4>
+                            <p>{primaryNumbers ? primaryNumbers[0][1] : "-"}</p></div>
+                    </div>
+                    <div className="column bordered">
+                        <div className="result__item"><h4>Логика</h4>
+                            <p>{primaryNumbers ? primaryNumbers[1][1] : "-"}</p></div>
+                    </div>
+                    <div className="column bordered">
+                        <div className="result__item"><h4>Долг</h4> <p>{primaryNumbers ? primaryNumbers[2][1] : "-"}</p>
+                        </div>
+                    </div>
+                    <div className="column bordered has-background-custom">
+                        <div className="result__item"><h4 style={{color: "rgb(255, 255, 255)"}}>Семья</h4> <p
+                            style={{color: "rgb(255, 255, 255)"}}>{famNum ? famNum : "-"}</p></div>
+                    </div>
+                </div>
+                <div className="columns is-mobile">
+                    <div className="column bordered">
+                        <div className="result__item"><h4>Интерес</h4>
+                            <p>{primaryNumbers ? primaryNumbers[0][2] : "-"}</p></div>
+                    </div>
+                    <div className="column bordered">
+                        <div className="result__item"><h4>Труд</h4> <p>{primaryNumbers ? primaryNumbers[1][2] : "-"}</p>
+                        </div>
+                    </div>
+                    <div className="column bordered">
+                        <div className="result__item"><h4>Память</h4>
+                            <p>{primaryNumbers ? primaryNumbers[2][2] : "-"}</p></div>
+                    </div>
+                    <div className="column bordered has-background-custom">
+                        <div className="result__item"><h4 style={{color: "rgb(255, 255, 255)"}}>Привычки</h4> <p
+                            style={{color: "rgb(255, 255, 255)"}}>{habbitNum ? habbitNum : "-"}</p></div>
+                    </div>
+                </div>
+                <div className="columns is-mobile">
+                    <div className="column is-3 is-offset-3 bordered">
+                        <div className="result__item"><h4>Быт</h4> <p>{bytNum}</p></div>
+                    </div>
+                </div>
+                <div className="columns is-mobile">
+                    <div className="column" style={{marginTop: "1rem", marginBottom: "1rem"}}>&nbsp;</div>
+                </div>
 
+            </div>
 
         );
     }
@@ -131,13 +153,13 @@ function CopyExample(props) {
                 /* Logical shortcut for only displaying the
                    button if the copy command exists */
                 document.queryCommandSupported('copy') &&
-                <div><OverlayTrigger   placement="right"
-                                       delay={{ show: 250, hide: 400 }}
-                                       overlay={renderTooltip}
-                                       target={copySuccess}
+                <div><OverlayTrigger placement="right"
+                                     delay={{show: 250, hide: 400}}
+                                     overlay={renderTooltip}
+                                     target={copySuccess}
                 >
-                <Button variant="dark" onClick={copyToClipboard}>Copy</Button>
-                 </OverlayTrigger></div>
+                    <Button variant="dark" onClick={copyToClipboard}>Copy</Button>
+                </OverlayTrigger></div>
 
             }
             <form>
@@ -149,8 +171,9 @@ function CopyExample(props) {
         </div>
     );
 }
+
 function getTextFromMatrix(matrix) {
-    return ""+matrix[0][0]+"/"+matrix[0][1]+"/"+matrix[0][2]+"/"+matrix[1][0]+"/"+matrix[1][1]+"/"+matrix[1][2]+"/"+matrix[2][0]+"/"+matrix[2][1]+"/"+matrix[2][2];
+    return "" + matrix[0][0] + "/" + matrix[0][1] + "/" + matrix[0][2] + "/" + matrix[1][0] + "/" + matrix[1][1] + "/" + matrix[1][2] + "/" + matrix[2][0] + "/" + matrix[2][1] + "/" + matrix[2][2];
 }
 
 function App(props) {
@@ -171,8 +194,8 @@ function App(props) {
     const [copyText, setCopyText] = useState("");
 
     let onChange = e => {
-            setMaskString('DD.MM.YYYY');
-            setMask('00.00.0000');
+        setMaskString('DD.MM.YYYY');
+        setMask('00.00.0000');
         if (moment(e.target.value)) {
             console.log(e.target.value);
 
@@ -266,9 +289,9 @@ function App(props) {
             setHabbNum(habbNumber);
             setBytNum(bytNumber);
             console.log(matrix)
-            setCopyText(getTextFromMatrix(matrix)+"/"+fateNumber+"число судьбы/"
-                +temperamentNumber+"темп/"+goalNumber+"цель/"+famNumber+"семья/"
-                +habbNumber+"привычки/"+bytNumber+"быт")
+            setCopyText(getTextFromMatrix(matrix) + "/" + fateNumber + "число судьбы/"
+                + temperamentNumber + "темп/" + goalNumber + "цель/" + famNumber + "семья/"
+                + habbNumber + "привычки/" + bytNumber + "быт")
 
         }
     };
@@ -277,24 +300,49 @@ function App(props) {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
-                {/*<DateInput date={moment(this.context.selectedDate).format("YYYY-MM-DD")}>*/}
-                {/*</DateInput>*/}
-                <MaskInput
-                    onChange={(e) => onChange(e)}
-                    maskString={maskString}
-                    mask={mask}
-                    size={35}
-                    showMask
-                    placeholder="Введите день рождение 31.12.1920">
-                </MaskInput>
-                <br/>
+                <div className="container matrix matrix__wrapper">
+                    <section className="matrix__form">
+                        <div className="columns is-mobile is-centered">
+                            <div className="column is-three-fifths matrix_date">
+                                <div className="field is-grouped is-grouped-centered">
+                                    <div className="control">
+                                        <div className="control is-clearfix"><MaskInput
+                                            onChange={(e) => onChange(e)}
+                                            maskString={maskString}
+                                            mask={mask}
+                                            size={35}
+                                            showMask
+                                            placeholder="Введите дату рождения 01.01.1970">
+                                        </MaskInput> &nbsp;&nbsp;&nbsp;</div>
+                                    </div>
+                                    <div className="control"><a className="button"
+                                                                style={{color: "rgb(255, 255, 255)"}}>
+                                        &nbsp;
+                                    </a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section className="result has-text-centered"
+                             style={{marginLeft: "1rem", marginRight: "1rem", marginBottom: "3rem"}}>
 
-                <CustomTable date={selectedDate} primaryNumbers={primaryNumbers}
-                       fateNumber={fateNumber} birthday={birthday}
-                       temperamentNumber={temperamentNumber} goalNumber={goalNumber}
-                       famNumber={famNumber} habbNum={habbNumber} bytNum={bytNumber}/>
-
-                       <CopyExample variant="dark" value={copyText}/>
+                        <CustomTable date={selectedDate} primaryNumbers={primaryNumbers}
+                                     fateNumber={fateNumber} birthday={birthday}
+                                     temperamentNumber={temperamentNumber} goalNumber={goalNumber}
+                                     famNumber={famNumber} habbNum={habbNumber} bytNum={bytNumber}/>
+                        <div className="columns is-mobile">
+                            <div className="column" style={{marginTop: "1rem"}}>
+                                <div className="field is-grouped is-grouped-centered">
+                                    <div className="control">
+                                        <div className="control is-clearfix">
+                                            <CopyExample variant="dark" value={copyText}/>
+                                            &nbsp;&nbsp;&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </header>
         </div>
     );
