@@ -175,7 +175,16 @@ function CopyExample(props) {
 function getTextFromMatrix(matrix) {
     return "" + matrix[0][0] + "/" + matrix[0][1] + "/" + matrix[0][2] + "/" + matrix[1][0] + "/" + matrix[1][1] + "/" + matrix[1][2] + "/" + matrix[2][0] + "/" + matrix[2][1] + "/" + matrix[2][2];
 }
-
+function reduceNumber(innum) {
+    while(innum > 9) {
+        var tempSubName = innum.toString().split("");
+        var subNameValue = 0;
+        for (var x = 0,  y = tempSubName.length; x < y; x++)
+        { subNameValue = subNameValue + parseInt(tempSubName[x]); }
+        innum = subNameValue;
+    }
+    return innum;
+}
 function App(props) {
 
     const [mask, setMask] = React.useState('00.00.0000');
@@ -212,12 +221,14 @@ function App(props) {
             console.log("firstNumber " + firstNumber);
             let secondNumberText = firstNumber.toString();
             let fateNumber = 0;
+
             for (let i = 0; i < secondNumberText.length; i++) {
                 let newNum = parseInt(secondNumberText.charAt(i));
                 primaryNumbers.push(newNum);
                 console.log(primaryNumbers)
                 fateNumber = fateNumber + newNum;
             }
+            fateNumber = reduceNumber(parseInt(secondNumberText));
             console.log("SecondNumber " + fateNumber);
             primaryNumbers.push(fateNumber)
 
